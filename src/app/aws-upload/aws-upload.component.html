@@ -1,0 +1,322 @@
+<div style="margin-top: 6rem;text-align: center; align-items: center;">
+
+  <div *ngIf="!authorized" class="form-floating mb-3">
+    <input type="email" style="width: 20%;margin-left: 41%;" class="form-control" id="floatingInput"
+      [(ngModel)]="userName" placeholder="Username">
+    <label for="floatingInput" style="margin-left: 41%;">UserName</label>
+  </div>
+  <div *ngIf="!authorized" class="form-floating">
+    <input type="password" style="width: 20%;margin-left: 41%;" class="form-control" id="floatingPassword"
+      [(ngModel)]="password" placeholder="Password">
+    <label for="floatingPassword" style="margin-left: 41%;">Password</label>
+  </div>
+  <!-- <div class="form-group form-check form-check-inline">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+
+  <button *ngIf="!authorized" type="submit" class="btn btn-primary" (click)="verify()">Submit</button>
+  <div *ngIf="wrongcreds" class="alert alert-danger" role="alert">
+    <h4 class="alert-danger">Oh No!</h4>
+    <p>Seems You are not Authorized</p>
+    <hr>
+    <p class="mb-0">Enter correct Credentials if you really want the Access</p>
+  </div>
+
+  <div *ngIf="authorized" style="margin-top: 6vw">
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Logged In!(After Upload Please clear cache for changes to reflect immediately)</h4>
+    </div>
+    <input type="file" (change)="onChange($event)" style="background: white;">
+    <button *ngIf="filename" class="btn btn-success" (click)="submit()">Upload</button>
+
+  </div>
+</div>
+
+
+
+
+<div class="container" *ngIf="authorized" style="margin-top: 20px; margin-bottom: 5%;">
+  <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3">
+    <div class="col">
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action active" aria-current="true">
+          Home
+        </a>
+        <a class="list-group-item list-group-item-action">
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="config" value="config.json"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="config">
+              config.json
+            </label>
+          </div>
+
+        </a>
+        <a class="list-group-item list-group-item-action list-group-item-danger">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="LinkReports" value=".pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="LinkReports">
+              Link Reports
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HomepageUpdate"
+              value="HomepageUpdate.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HomepageUpdate">
+              HomepageUpdate
+            </label>
+          </div>
+
+        </a>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action active" aria-current="true">
+          About Us
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="Registration" value="Registration.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="Registration">
+              Reg. Certificate
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="12A" value="12A.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="12A">
+              12A Certificate
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="80G" value="80G.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="80G">
+              80G Certificate
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="PAN" value="PAN.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="PAN">
+              PAN
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="TAN" value="TAN.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="TAN">
+              TAN
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="CSR" value="CSR.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="CSR">
+              CSR
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="FCRA" value="FCRA.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="FCRA">
+              FCRA
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="UniqueID" value="UniqueID.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="UniqueID">
+              Unique ID
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="VisionMission"
+              value="VisionMission.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="VisionMission">
+              Vision Mission
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="BoardMembers" value="BoardMembers.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="BoardMembers">
+              Board Members
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="profile"
+              value="OrganizationProfile.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="profile">
+              Organization Profile
+            </label>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action active" aria-current="true">
+          Projects
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="SchoolEducation"
+              value="SchoolEducation.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="SchoolEducation">
+              School & Education
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HealthNutrition"
+              value="HealthNutrition.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HealthNutrition">
+              Health & Nutrition
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="WomenEmpowerment"
+              value="WomenEmpowerment.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="WomenEmpowerment">
+              Women Empowerment
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="SkillTraining"
+              value="SkillTraining.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="SkillTraining">
+              Skill Training
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="EmergencyRelief"
+              value="EmergencyRelief.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="EmergencyRelief">
+              Emergency Relief
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OtherActivities"
+              value="OtherActivities.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OtherActivities">
+              Other Activities
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OurSupporters"
+              value="OurSupporters.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OurSupporters">
+              Our Supporters
+            </label>
+          </div>
+        </a>
+
+      </div>
+    </div>
+    <div class="col">
+      <div class="list-group">
+        <a class="list-group-item list-group-item-action active" aria-current="true">
+          Francesco Tamma
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="HolyCow" value="HolyCow.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="HolyCow">
+              Holy Cow
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="TrainaNurse" value="TrainaNurse.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="TrainaNurse">
+              Train a Nurse
+            </label>
+          </div>
+        </a>
+        <a class="list-group-item list-group-item-action">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="GoGreen" value="GoGreen.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="GoGreen">
+              Go Green
+            </label>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="list-group">
+
+        <a class="list-group-item list-group-item-action active" aria-current="true">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="DynamicReport"
+              value="DynamicReport.pdf" (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="DynamicReport">
+              Reports
+            </label>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="col">
+      <div class="list-group">
+
+        <a class="list-group-item list-group-item-action active" aria-current="true">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="OurGallery" value="ourgallery.pdf"
+              (change)="onItemChange($event.target.value)">
+            <label class="form-check-label" for="OurGallery">
+              Our Gallery
+            </label>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+</div>

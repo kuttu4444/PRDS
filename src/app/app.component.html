@@ -27,29 +27,27 @@
             <li><a class="dropdown-item" [routerLink]="['/OrganizationProfile']">Organization Profile</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: 500;">
-            Projects
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-            <li> <a class="dropdown-item" [routerLink]="['/SchoolEducation']">School & Education</a></li>
-              <li><a class="dropdown-item" [routerLink]="['/HealthNutrition']">Health & Nutrition</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/WomenEmpowerment']">Women Empowerment</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/SkillTraining']">Skill Training</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/EmergencyRelief']">Emergency Relief</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/OtherActivities']">Other Activities</a></li>
-                <li><a class="dropdown-item" [routerLink]="['/OurSupporters']">Our Supporters</a></li>
-          </ul>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          true}">
+          <a class="nav-link"  [routerLink]="['/Projects']" style="font-weight: 500;">Projects</a>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-weight: 500;">
-            Francesco Tamma – Love in Action
+            Francesco Tamma <br> Love in Action
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
             <li> <a class="dropdown-item" [routerLink]="['/HolyCow']">Holy Cow</a></li>
             <li><a class="dropdown-item" [routerLink]="['/TrainaNurse']">Nurse in Progress</a></li>
-              <li><a class="dropdown-item" [routerLink]="['/GoGreen']">Go Green</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/GoGreen']">Giving Garden</a></li>
           </ul>
+        </li> -->
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          true}">
+          <a class="nav-link"  [routerLink]="['/FrancescoTamma']" style="font-weight: 500;"> Francesco Tamma <br> Love in Action</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+          true}">
+          <a class="nav-link"  [routerLink]="['/AnahataStiftung']" style="font-weight: 500;">Anahata <br> Stiftung</a>
         </li>
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
           true}">

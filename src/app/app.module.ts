@@ -50,6 +50,9 @@ import { OtherActivitiesComponent } from './other-activities/other-activities.co
 import { HolyCowComponent } from './holy-cow/holy-cow.component';
 import { TrainANurseComponent } from './train-anurse/train-anurse.component';
 import { GoGreenComponent } from './go-green/go-green.component';
+import { AnahataStiftungComponent } from './anahata-stiftung/anahata-stiftung.component';
+import { OnlylinkreportsComponent } from './onlylinkreports/onlylinkreports.component';
+import { ProjectsComponent } from './projects/projects.component';
 const appRoutes:Routes=[
   {path:'',component:HomePageComponent},
   {path:'Homepage',component:HomePageComponent},
@@ -92,6 +95,9 @@ const appRoutes:Routes=[
   {path:'HolyCow',component:HolyCowComponent},
   {path:'TrainaNurse',component:TrainANurseComponent},
   {path:'GoGreen',component:GoGreenComponent},
+  {path:'AnahataStiftung',component:AnahataStiftungComponent},
+  {path:'ProjectsLink',component:OnlylinkreportsComponent},
+  {path:'Projects',component:ProjectsComponent},
 ]
 RouterModule.forRoot(appRoutes,{ preloadingStrategy:PreloadAllModules})
 @NgModule({
@@ -136,7 +142,10 @@ RouterModule.forRoot(appRoutes,{ preloadingStrategy:PreloadAllModules})
     OtherActivitiesComponent,
     HolyCowComponent,
     TrainANurseComponent,
-    GoGreenComponent
+    GoGreenComponent,
+    AnahataStiftungComponent,
+    OnlylinkreportsComponent,
+    ProjectsComponent
   ],
   imports: [
     NgxExtendedPdfViewerModule,CountUpModule,BrowserModule,FormsModule, PdfViewerModule, HttpClientModule,RouterModule.forRoot(appRoutes, {scrollPositionRestoration: 'enabled'}),NgJsonEditorModule
